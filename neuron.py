@@ -10,8 +10,8 @@ def sigmoid(x):
 
 class Neuron:
   def __init__(self, weights, bias):
-  self.weights = weights
-  self.bias = bias
+    self.weights = weights
+    self.bias = bias
   
   # weight input, add bias, apply activation function
   # y = f(x_1*w_1 + x_2*w_2 + b)
@@ -20,3 +20,13 @@ class Neuron:
   def feedforward(self, input):
     total = np.dot(self.weights, input) + self.bias
     return sigmoid(total)
+
+# w_1 = 0 & w_2 = 1
+weights = np.array([0,1])
+bias = 4
+
+# let's do the magic …!
+n = Neuron(weights, bias)
+x = np.array([2,3])
+r = n.feedforward(x)
+print(r)

@@ -8,6 +8,18 @@ import numpy as np
 def sigmoid(x):
   return 1 / (1+np.exp(-x))
 
+# derivative of the sigmoid function
+# \frac{\partial f(x)}{\partial x} = f(x) \ast (1-f(x))
+def deriv_sigmoid(x):
+  f = sigmoid(x)
+  return fx * (1 - fx)
+
+# Mean square loss
+# mse = \frac{1}{n} \sum_{i=1}^{n}(y_i^\text{true}-y_i^\text{pred})^2
+# (note: the ys are np-arrays of same length)
+def mse_loss(y_true, y_predict):
+  return ((y_true-y_predict)**2).mean()
+
 class Neuron:
   def __init__(self, weights, bias):
     self.weights = weights
@@ -31,12 +43,6 @@ bias = 4
 #r = n.feedforward(x)
 #print(r)
 
-# Mean square loss
-# mse = \frac{1}{n} \sum_{i=1}^{n}(y_i^\text{true}-y_i^\text{pred})^2
-# (note: the ys are np-arrays of same length)
-def mse_loss(y_true, y_predict):
-  return ((y_true-y_predict)**2).mean()
-
 class MyNeuralNetwork:
   '''
   take two inputs, run them through one hidden layer with two neurons, called h1
@@ -44,8 +50,19 @@ class MyNeuralNetwork:
   neuron has the same weights and biases, w1=0, w2=1, b=0 for simplicity.
   '''
   def __init__(self):
-    weights = np.array([0,1])
-    bias = 0
+    # Weights
+    self.w1 = np.random.normal()
+    self.w2 = np.random.normal()
+    self.w3 = np.random.normal()
+    self.w4 = np.random.normal()
+    self.w5 = np.random.normal()
+    self.w6 = np.random.normal()
+
+    # Biases
+    self.b1 = np.random.normal()
+    self.b2 = np.random.normal()
+    self.b3 = np.random.normal()
+    
     self.h1 = Neuron(weights, bias)
     self.h2 = Neuron(weights, bias)
     self.o1 = Neuron(weights, bias)

@@ -31,6 +31,12 @@ bias = 4
 #r = n.feedforward(x)
 #print(r)
 
+# Mean square loss
+# mse = \frac{1}{n} \sum_{i=1}^{n}(y_i^\text{true}-y_i^\text{pred})^2
+# (note: the ys are np-arrays of same length)
+def mse_loss(y_true, y_predict):
+  return ((y_true-y_predict)**2).mean()
+
 class MyNeuralNetwork:
   '''
   take two inputs, run them through one hidden layer with two neurons, called h1
